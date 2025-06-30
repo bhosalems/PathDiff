@@ -78,13 +78,13 @@ PathDiff integrates Text and Mask control as seen below.
 
 
 ```
-- main.py # Run to train with your own dataset
+- main.py # Run to train with your own dataset, you need to set up the config and Dataset class. Pleas take a look at the example of config in below command.
 python main.py -t --base configs/latent-diffusion/mixed_cond/plip_imagenet_finetune_Mixed_control.yaml
 
 - sampling.py # Run generation from text, mask, or both
 python sampling.py
 
-- evaluation.py # Run to sample from infer.yaml config file (functionally similar to sampling.py)
+- evaluation.py # Run to sample from infer.yaml config file (functionally similar to sampling.py). You need to set up the config. Pleas take a look at the example of config in below command.
 python evaluation.py --config configs/latent-diffusion/mixed_cond/plip_imagenet_finetune_mixed_control_inference.yaml --save --inference --plot
 
 

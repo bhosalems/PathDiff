@@ -31,7 +31,8 @@ cd PathDiff
 # create and activate a conda/env virtual environment
 conda env create -f environment.yml
 conda activate pathdiff
-
+```
+---
 ### Quick Start
 
 Download pretrained model trained on PathCap and CONIC jointly here. Please setup the path of the downloaded checkpoint in sampling.py. We also provide small dataset with silver standard masks in pathcap_label_pred_small according to different pathologies.
@@ -41,23 +42,29 @@ Download pretrained model trained on PathCap and CONIC jointly here. Please setu
 # Run Inference
 python sampling.py
 ```
-
+---
 ### 🖼 Qualitative Results
-Images generated from the 
-```markdown
+PathDiff integrates Text and Mask control as seen below.
+
 <p align="center">
   <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="90%"/>
 </p>
-```
-
+---
 ### 🔧 Scripts
 
 ```
 - main.py # Run to train with your own dataset
+python main.py -t --base configs/latent-diffusion/mixed_cond/plip_imagenet_finetune_Mixed_control.yaml
 
 - sampling.py # Run generation from text, mask, or both
+python sampling.py
+
 - evaluation.py # Run to sample from infer.yaml config file (functionally similar to sampling.py)
+python evaluation.py --config configs/latent-diffusion/mixed_cond/plip_imagenet_finetune_mixed_control_inference.yaml --save --inference --plot
+
+
 - compute_metrics.py # Run to calculate the FID, KID, PLIP score etc.
+python computer_metrics.py
 ```
 
 ### 🤝 Acknowledgements

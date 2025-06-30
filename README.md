@@ -20,7 +20,7 @@ restricts the ability to fully exploit the benefits of combining both modalities
   <img src="figures/method.png" alt="PathDiff Method" width="80%"/>
 </p>
 
-*Figure 1. PathDiff training & inference pipeline.*
+*Figure 1. PathDiff Overview*
 
 
 
@@ -72,7 +72,7 @@ PathDiff integrates Text and Mask control as seen below.
   <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="99%"/>
 </p>
 
-
+*Figure 2. Unified Inference*
 
 ## 🔧 Scripts
 

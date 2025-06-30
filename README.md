@@ -66,7 +66,9 @@ python sampling.py
 ## 🖼 Qualitative Results
 
 
-PathDiff integrates Text and Mask control as seen below.
+PathDiff integrates Text and Mask control as seen below. 
+
+<small>Note that in this example conditions are randomly paired and might not be pathologically meaningful/plausible. For paired results please check our supplementary.</small>
 
 <p align="center">
   <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="99%"/>

@@ -1,3 +1,4 @@
+name: pathdiff
 channels:
   - anaconda
   - plotly

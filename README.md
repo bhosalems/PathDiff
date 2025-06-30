@@ -1,4 +1,8 @@
-# PathDiff : Histopathology Image Synthesis with Unpaired Text and Mask Conditions**
+# 🚀 PathDiff : Histopathology Image Synthesis with Unpaired Text and Mask Conditions**
+
+[Mahesh Bhosale](https://bhosalems.github.io/)<sup>1</sup>, [Abdul Wasi](https://scholar.google.com/citations?user=_2friTYAAAAJ&hl=en)<sup>1</sup>, [Yuanhao Zhai](https://www.yhzhai.com/)<sup>1</sup>, [Yunjie Tian](https://sunsmarterjie.github.io/)<sup>1</sup>, [Samuel Border](https://scholar.google.com/citations?user=6EIOlGMAAAAJ&hl=en)<sup>2</sup>, [Nan Xi](https://southnx.github.io/)<sup>1</sup>, [Pinaki Sarder](https://scholar.google.com/citations?user=BZyJ4qMAAAAJ&hl=en)<sup>2</sup>, [Junsong Yuan](https://scholar.google.com/citations?user=fJ7seq0AAAAJ&hl=en)<sup>1</sup>, [David Doermann](https://scholar.google.com/citations?user=RoGOW9AAAAAJ&hl=en)<sup>1</sup>, [Xuan Gong](https://scholar.google.com/citations?user=sTqQ-jgAAAAJ&hl=en)<sup>3</sup>
+
+**<sup>1</sup>University at Buffalo  |  <sup>2</sup>University of Florida  |  <sup>3</sup>Harvard Medical School**
 
 ---
 
@@ -30,7 +34,7 @@ conda activate pathdiff
 
 ### Quick Start
 
-Download pretrained model trained on PathCap and CONIC jointly here. Please setup the path of the downloaded checkpoint in sampling.py.
+Download pretrained model trained on PathCap and CONIC jointly here. Please setup the path of the downloaded checkpoint in sampling.py. We also provide small dataset with silver standard masks in pathcap_label_pred_small according to different pathologies.
 
 ```bash
 
@@ -39,55 +43,27 @@ python sampling.py
 ```
 
 ### 🖼 Qualitative Results
-
+Images generated from the 
 ```markdown
 <p align="center">
   <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="90%"/>
 </p>
-*Figure 2. Sample syntheses on PanNuke, CoNIC, and MoNuSAC.*
-```
-
-### 📊 Quantitative Results
-
-```markdown
-| Dataset    | Condition    | FID ↓    | KID ↓    | PLIP ↑   |
-|------------|--------------|---------:|---------:|---------:|
-| PanNuke    | Mask only    | **7.21** | 0.0415   | –        |
-| PathCap    | Text only    | **14.04**| 0.0557   | **24.66**|
-| PathCap    | Mask+Text    | **10.54**| 0.0766   | **24.02**|
-
-Table 1. Main generation metrics across different conditioning modes.
-```
-
-### 🗄 Model Zoo
-
-```markdown
-| Task            | Checkpoint                                          | Notes                               |
-|-----------------|-----------------------------------------------------|-------------------------------------|
-| Mask → Image    | pathdiff_mask2img.pth (PanNuke+CoNIC+MoNuSAC)       | Trained on three M2I datasets       |
-| Text → Image    | pathdiff_text2img.pth (PathCap subset)              | Trained on PathCap histogram images |
-| Unified Model   | pathdiff_unified.pth (Joint T2I & M2I)              | Joint training on both modalities   |
 ```
 
 ### 🔧 Scripts
 
-```markdown
-- scripts/train.py       # Training entrypoint (coming soon)
-- scripts/inference.py   # Run generation from text, mask, or both
-- scripts/evaluate.py    # Compute FID, KID, PLIP, Faithfulness
+```
+- main.py # Run to train with your own dataset
+
+- sampling.py # Run generation from text, mask, or both
+- evaluation.py # Run to sample from infer.yaml config file (functionally similar to sampling.py)
+- compute_metrics.py # Run to calculate the FID, KID, PLIP score etc.
 ```
 
-### 🤝 Contributing
+### 🤝 Acknowledgements
 
-```markdown
-1. Fork the repository  
-2. Create your feature branch (`git checkout -b feature/foo`)  
-3. Commit your changes (`git commit -m 'Add foo'`)  
-4. Push to the branch (`git push origin feature/foo`)  
-5. Open a Pull Request  
+We thanks authors of [PathLDM](https://github.com/cvlab-stonybrook/PathLDM), [ControlNet](https://github.com/lllyasviel/ControlNet) and [DeepCMorph](https://github.com/aiff22/DeepCMorph) for release of their code. We also thank authors of datasets we used in this work.
 
-Please see CONTRIBUTING.md for more details.
-```
 
 ### 📑 Citation
 

@@ -4,7 +4,7 @@
 
 **<sup>1</sup>University at Buffalo  |  <sup>2</sup>University of Florida  |  <sup>3</sup>Harvard Medical School**
 
----
+
 
 ## 📖 Overview
 
@@ -22,7 +22,7 @@ restricts the ability to fully exploit the benefits of combining both modalities
 
 *Figure 1. PathDiff training & inference pipeline.*
 
----
+- - -
 
 
 ### ⚙️ Installation
@@ -36,7 +36,7 @@ conda env create -f environment.yml
 conda activate pathdiff
 ```
 
----
+- - -
 
 ### 🚀 Quick Start
 
@@ -49,7 +49,7 @@ Download pretrained model trained jointly [here](https://drive.google.com/drive/
 python sampling.py
 ```
 
----
+- - -
 
 ### 🖼 Qualitative Results
 
@@ -61,7 +61,7 @@ PathDiff integrates Text and Mask control as seen below.
 </p>
 
 
----
+- - -
 
 ### 🔧 Scripts
 
@@ -81,7 +81,7 @@ python evaluation.py --config configs/latent-diffusion/mixed_cond/plip_imagenet_
 python computer_metrics.py
 ```
 
----
+- - -
 
 ### ⚠️ Ethical Statement
 
@@ -89,14 +89,14 @@ python computer_metrics.py
 This model is provided for **research and educational purposes only**. It is **not** designed, tested, or validated for clinical or diagnostic use. **Under no circumstances** should it be used to make medical decisions or inform patient care.
 
 
----
+- - -
 
 ### 🤝 Acknowledgements
 
 
 We thanks authors of [PathLDM](https://github.com/cvlab-stonybrook/PathLDM), [ControlNet](https://github.com/lllyasviel/ControlNet) and [DeepCMorph](https://github.com/aiff22/DeepCMorph) for release of their code. We also thank authors of datasets we used in this work.
 
----
+- - -
 
 ### 📑 Citation
 

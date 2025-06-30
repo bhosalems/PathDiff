@@ -11,17 +11,17 @@
 PathDiff is a novel diffusion-based framework for generating high-quality histopathology images by jointly leveraging **unpaired** text reports and cell-type masks. Unlike prior methods that require paired annotations, PathDiff learns from two separate datasets, one with image–text pairs and one with image–mask pairs, and at inference time can synthesize images conditioned on: **Text** only or **Mask** only or **Both text & mask**.
 
 ## Abstract
+
 Diffusion-based generative models have shown promise in synthesizing histopathology images to address data scarcity caused by privacy constraints. Diagnostic text reports provide high-level semantic descriptions, and masks offer fine-
 grained spatial structures essential for representing distinct morphological regions. However, public datasets lack paired text and mask data for the same histopathological images, limiting their joint use in image generation. This constraint
 restricts the ability to fully exploit the benefits of combining both modalities for enhanced control over semantics and spatial details. To overcome this, we propose PathDiff, a diffusion framework that effectively learns from unpaired mask-text data by integrating both modalities into a unified conditioning space. PathDiff allows precise control over structural and contextual features, generating high-quality, semantically accurate images. PathDiff also improves image fidelity, text-image alignment, and faithfulness, enhancing data augmentation for downstream tasks like nuclei segmentation and classification. Extensive experiments demonstrate its superiority over existing methods.
 
 <p align="center">
-  <img src="figures/method.png" alt="PathDiff Method" width="80%"/>
+  <img src="figures/method.png" alt="PathDiff Method" width="99%"/>
 </p>
 
 *Figure 1. PathDiff training & inference pipeline.*
 
----
 
 ## ⚙️ Installation
 
@@ -32,24 +32,27 @@ cd PathDiff
 conda env create -f environment.yml
 conda activate pathdiff
 ```
----
+
+
 ### Quick Start
 
-Download pretrained model trained on PathCap and CONIC jointly here. Please setup the path of the downloaded checkpoint in sampling.py. We also provide small dataset with silver standard masks in pathcap_label_pred_small according to different pathologies.
+Download pretrained model trained jointly [here](https://drive.google.com/drive/folders/1y2vwDWGqqqn95ClFr-kT0IUCTVqrq0uy?usp=sharing). Please setup the path of the downloaded checkpoint in sampling.py. We also provide small dataset with silver standard masks on PathCap in pathcap_label_pred_small according to different pathologies.
 
 ```bash
 
 # Run Inference
 python sampling.py
 ```
----
+
 ### 🖼 Qualitative Results
+
 PathDiff integrates Text and Mask control as seen below.
 
 <p align="center">
-  <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="90%"/>
+  <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="99%"/>
 </p>
----
+
+
 ### 🔧 Scripts
 
 ```

@@ -87,7 +87,6 @@ python sampling.py
 - evaluation.py # Run to sample from infer.yaml config file (functionally similar to sampling.py). You need to set up the config. Pleas take a look at the example of config in below command.
 python evaluation.py --config configs/latent-diffusion/mixed_cond/plip_imagenet_finetune_mixed_control_inference.yaml --save --inference --plot
 
-
 - compute_metrics.py # Run to calculate the FID, KID, PLIP score etc.
 python computer_metrics.py
 ```

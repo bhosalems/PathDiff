@@ -10,7 +10,7 @@
 
 PathDiff is a novel diffusion-based framework for generating high-quality histopathology images by jointly leveraging **unpaired** text reports and cell-type masks. Unlike prior methods that require paired annotations, PathDiff learns from two separate datasets, one with image–text pairs and one with image–mask pairs, and at inference time can synthesize images conditioned on: **Text** only or **Mask** only or **Both text & mask**.
 
-#### 📄 Abstract
+### 📄 Abstract
 
 Diffusion-based generative models have shown promise in synthesizing histopathology images to address data scarcity caused by privacy constraints. Diagnostic text reports provide high-level semantic descriptions, and masks offer fine-
 grained spatial structures essential for representing distinct morphological regions. However, public datasets lack paired text and mask data for the same histopathological images, limiting their joint use in image generation. This constraint

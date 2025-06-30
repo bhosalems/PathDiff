@@ -1,19 +1,18 @@
-# PathDiff
-
-**Histopathology Image Synthesis with Unpaired Text and Mask Conditions**
+# PathDiff : Histopathology Image Synthesis with Unpaired Text and Mask Conditions**
 
 ---
 
 ## 📖 Overview
 
-PathDiff is a novel diffusion-based framework for generating high-quality histopathology images by jointly leveraging **unpaired** text reports and cell-type masks. Unlike prior methods that require paired annotations, PathDiff learns from two separate datasets—one with image–text pairs and one with image–mask pairs—and at inference time can synthesize images conditioned on:
+PathDiff is a novel diffusion-based framework for generating high-quality histopathology images by jointly leveraging **unpaired** text reports and cell-type masks. Unlike prior methods that require paired annotations, PathDiff learns from two separate datasets, one with image–text pairs and one with image–mask pairs, and at inference time can synthesize images conditioned on: **Text** only or **Mask** only or **Both text & mask**.
 
-- **Text** only  
-- **Mask** only  
-- **Both text & mask**  
+## Abstract
+Diffusion-based generative models have shown promise in synthesizing histopathology images to address data scarcity caused by privacy constraints. Diagnostic text reports provide high-level semantic descriptions, and masks offer fine-
+grained spatial structures essential for representing distinct morphological regions. However, public datasets lack paired text and mask data for the same histopathological images, limiting their joint use in image generation. This constraint
+restricts the ability to fully exploit the benefits of combining both modalities for enhanced control over semantics and spatial details. To overcome this, we propose PathDiff, a diffusion framework that effectively learns from unpaired mask-text data by integrating both modalities into a unified conditioning space. PathDiff allows precise control over structural and contextual features, generating high-quality, semantically accurate images. PathDiff also improves image fidelity, text-image alignment, and faithfulness, enhancing data augmentation for downstream tasks like nuclei segmentation and classification. Extensive experiments demonstrate its superiority over existing methods.
 
 <p align="center">
-  <img src="figures/PathDiff_Method.png" alt="PathDiff Method" width="80%"/>
+  <img src="figures/method.png" alt="PathDiff Method" width="80%"/>
 </p>
 
 *Figure 1. PathDiff training & inference pipeline.*
@@ -31,33 +30,19 @@ conda activate pathdiff
 
 ### Quick Start
 
+Download pretrained model trained on PathCap and CONIC jointly here. Please setup the path of the downloaded checkpoint in sampling.py.
+
 ```bash
-# Download Pretrained Models
-wget https://github.com/bhosalems/PathDiff/releases/download/v1.0/pathdiff_mask2img.pth -P models/
-wget https://github.com/bhosalems/PathDiff/releases/download/v1.0/pathdiff_text2img.pth -P models/
 
 # Run Inference
-python scripts/inference.py \
-  --model models/pathdiff_mask2img.pth \
-  --mask path/to/cell_mask.png \
-  --text "High-grade carcinoma with prominent nucleoli" \
-  --output results/output.png
-```
-
-#### Arguments
-
-```text
---model   : Path to the checkpoint file (e.g., models/pathdiff_mask2img.pth)
---mask    : 256×256 binary or semantic mask (e.g., path/to/cell_mask.png)
---text    : Diagnostic report or caption (e.g., "High-grade carcinoma with prominent nucleoli")
---output  : Output image path (e.g., results/output.png)
+python sampling.py
 ```
 
 ### 🖼 Qualitative Results
 
 ```markdown
 <p align="center">
-  <img src="figures/qualitative_results.png" alt="Qualitative Results" width="90%"/>
+  <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="90%"/>
 </p>
 *Figure 2. Sample syntheses on PanNuke, CoNIC, and MoNuSAC.*
 ```

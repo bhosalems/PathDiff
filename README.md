@@ -21,9 +21,11 @@ restricts the ability to fully exploit the benefits of combining both modalities
 </p>
 
 *Figure 1. PathDiff training & inference pipeline.*
+---
 
 
 ## ⚙️ Installation
+
 
 ```bash
 git clone https://github.com/bhosalems/PathDiff.git
@@ -36,6 +38,7 @@ conda activate pathdiff
 
 ### Quick Start
 
+
 Download pretrained model trained jointly [here](https://drive.google.com/drive/folders/1y2vwDWGqqqn95ClFr-kT0IUCTVqrq0uy?usp=sharing). Please setup the path of the downloaded checkpoint in sampling.py. We also provide small dataset with silver standard masks on PathCap in pathcap_label_pred_small according to different pathologies.
 
 ```bash
@@ -46,6 +49,7 @@ python sampling.py
 
 ### 🖼 Qualitative Results
 
+
 PathDiff integrates Text and Mask control as seen below.
 
 <p align="center">
@@ -54,6 +58,7 @@ PathDiff integrates Text and Mask control as seen below.
 
 
 ### 🔧 Scripts
+
 
 ```
 - main.py # Run to train with your own dataset
@@ -70,12 +75,20 @@ python evaluation.py --config configs/latent-diffusion/mixed_cond/plip_imagenet_
 python computer_metrics.py
 ```
 
+## Ethical Statement
+
+
+This model is provided for **research and educational purposes only**. It is **not** designed, tested, or validated for clinical or diagnostic use. **Under no circumstances** should it be used to make medical decisions or inform patient care.
+
+
 ### 🤝 Acknowledgements
+
 
 We thanks authors of [PathLDM](https://github.com/cvlab-stonybrook/PathLDM), [ControlNet](https://github.com/lllyasviel/ControlNet) and [DeepCMorph](https://github.com/aiff22/DeepCMorph) for release of their code. We also thank authors of datasets we used in this work.
 
 
 ### 📑 Citation
+
 
 ```bibtex
 @inproceedings{bhosale2025pathdiff,
@@ -84,10 +97,4 @@ We thanks authors of [PathLDM](https://github.com/cvlab-stonybrook/PathLDM), [Co
   booktitle = {Proceedings of ICCV},
   year      = {2025}
 }
-```
-
-### 📄 License
-
-```markdown
-This project is licensed under the MIT License – see the LICENSE file for details.
 ```

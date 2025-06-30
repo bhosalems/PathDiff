@@ -23,8 +23,9 @@ restricts the ability to fully exploit the benefits of combining both modalities
 *Figure 1. PathDiff Overview*
 
 
+## 🚀 Quick Start
 
-## ⚙️ Installation
+### ⚙️ Environment setup
 
 
 ```bash
@@ -35,10 +36,10 @@ conda env create -f environment.yml
 conda activate pathdiff
 ```
 
-## 🚀 Quick Start
+### 🌊 Inference 
 
 
-Download pretrained model trained jointly [here](https://drive.google.com/drive/folders/1y2vwDWGqqqn95ClFr-kT0IUCTVqrq0uy?usp=sharing). Please setup the path of the downloaded checkpoint sand configs in sampling.py. We also provide small dataset with silver standard masks on PathCap in pathcap_label_pred_small according to different pathologies. 
+Download pretrained model trained jointly [here](https://drive.google.com/drive/folders/1y2vwDWGqqqn95ClFr-kT0IUCTVqrq0uy?usp=sharing). Please setup the path of the downloaded checkpoint and config in sampling.py. We also provide small subset of dataset with silver standard masks on PathCap in [pathcap_label_pred_small](https://github.com/bhosalems/PathDiff/tree/main/pathcap_label_pred_small) directory according to different pathologies. 
 
 ```bash
 # Set the checkpoint and config. Let method be PathDiff and dataset be PATHCAP (trained jointly on PathCap and CONIC.)

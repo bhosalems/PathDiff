@@ -42,19 +42,22 @@ Download pretrained model trained jointly [here](https://drive.google.com/drive/
 
 ```bash
 # Set the checkpoint and config. Let method be PathDiff and dataset be PATHCAP (trained jointly on PathCap and CONIC.)
-model_check_points = {
-            "PanNuke": "",
-            "TCGA": "",
-            "CONIC": "",
-            "PATHCAP": "last.ckpt" <-------- Set this
-        }
-  
-model_configs = {
-            "PanNuke": "",
-            "TCGA": "",
-            "CONIC": "",
-            "PATHCAP": "/configs/11-02T02-36-project.yaml"
-        }  
+if method == 'PathDiff':
+  mask_channels = 6
+  model_check_points = {
+              "PanNuke": "",
+              "TCGA": "",
+              "CONIC": "",
+              "PATHCAP": "last.ckpt" <-------- Set this
+          }
+    
+  model_configs = {
+              "PanNuke": "",
+              "TCGA": "",
+              "CONIC": "",
+              "PATHCAP": "/configs/11-02T02-36-project.yaml" <-------- Set this
+          }  
+
 # Run Inference
 python sampling.py
 ```

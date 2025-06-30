@@ -68,13 +68,13 @@ python sampling.py
 
 PathDiff integrates Text and Mask control as seen below. 
 
-<span style="font-size:80%">Note that in this example conditions are randomly paired and might not be pathologically meaningful/plausible. For paired results please check our supplementary.</span>
-
 <p align="center">
   <img src="figures/Qual_fig2.png" alt="Qualitative Results" width="99%"/>
 </p>
 
 *Figure 2. Unified Inference*
+
+<span style="font-size:80%">Note that in this example conditions are randomly paired and might not be pathologically meaningful/plausible. For paired results please check our supplementary.</span>
 
 ## 🔧 Scripts
 

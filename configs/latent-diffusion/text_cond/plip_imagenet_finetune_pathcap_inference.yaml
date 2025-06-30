@@ -1,0 +1,16 @@
+data_config: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/configs/latent-diffusion/text_cond/plip_imagenet_finetune.yaml"
+# data_config: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/plip_imagenet_finetune/configs/08-03T09-35-project.yaml"
+model_config: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/configs/latent-diffusion/text_cond/plip_imagenet_finetune.yaml"
+# model_config: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/plip_imagenet_finetune/configs/08-03T09-35-project.yaml" 
+ckpt_path: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/logs/02-27T01-04_plip_imagenet_finetune/checkpoints/last.ckpt"
+# ckpt_path: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/plip_imagenet_finetune/checkpoints/epoch_3.ckpt"
+fid_path: "/home/csgrad/mbhosale/Datasets/TCGA/brca_real_stats.npz"
+output_dir: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/logs/inference/BRCA/finetuned_checkpoint/"
+# output_dir: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/logs/inference/BRCA/author_checkpoint/"
+# validation_step_outputs_file: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/logs/inference/BRCA/author_checkpoint/test_inference/test_step_outputs.pt"
+total_samples: -1
+split: "test"
+device: "cuda:0"
+shape: [3, 64, 64]
+steps: 50
+unconditional_guidance_scale: 1.5

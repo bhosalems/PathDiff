@@ -1,0 +1,75 @@
+model:
+  base_learning_rate: 9.0e-06
+  target: ldm.models.autoencoder.VQModel
+  params:
+    embed_dim: 3
+    n_embed: 8192
+    monitor: val/rec_loss
+    # ckpt_path: models/first_stage_models/vq-f4-tcga-brca/last.ckpt
+    ddconfig:
+      double_z: false
+      z_channels: 3
+      resolution: 256
+      in_channels: 3
+      out_ch: 3
+      ch: 128
+      ch_mult:
+      - 1
+      - 2
+      - 4
+      num_res_blocks: 2
+      attn_resolutions:
+      - 32
+      dropout: 0.0
+    lossconfig:
+      target: taming.modules.losses.vqperceptual.VQLPIPSWithDiscriminator
+      params:
+        disc_conditional: false
+        disc_in_channels: 3
+        disc_num_layers: 2
+        disc_start: 1
+        disc_weight: 0.6
+        codebook_weight: 1.0
+data:
+  target: main.DataModuleFromConfig
+  params:
+    batch_size: 12
+    num_workers: 12
+    wrap: false
+    train:
+      target: ldm.data.autoencoder.all_data.AllConditionDataset
+      params:
+        config:
+          datasets:
+            Hands:
+              config:
+                root: /a2il/data/mbhosale/Diffhaul/Hands/train
+                split: train
+                crop_size: 256
+                num_levels: 2
+          inference: false
+    validation:
+      target: ldm.data.autoencoder.all_data.AllConditionDataset
+      params:
+        config:
+          datasets:
+            Hands:
+              config:
+                  root: /a2il/data/mbhosale/Diffhaul/Hands/test
+                  split: test
+                  crop_size: 256
+                  num_levels: 2
+          inference: false
+lightning:
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 1000
+        max_images: 8
+        increase_log_steps: True
+  trainer:
+    benchmark: True
+    accumulate_grad_batches: 2
+    accelerator: ddp
+    gpus: 0,5,6,7

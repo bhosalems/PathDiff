@@ -1,0 +1,170 @@
+model:
+  target: cldm.cldm.ControlLDM
+  base_learning_rate: 3.75e-05
+  params:
+    linear_start: 0.00085
+    linear_end: 0.0120
+    num_timesteps_cond: 1
+    log_every_t: 200 #200
+    timesteps: 1000 #1000
+    validation_start_epoch: 35
+    first_stage_key: "jpg"
+    cond_stage_key: "txt"
+    control_key: "hint"
+    image_size: 64
+    channels: 3
+    cond_stage_trainable: false
+    conditioning_key: crossattn
+    monitor: val/loss_simple_ema
+    scale_factor: 0.18215 # new addition
+    use_ema: False
+    only_mid_control: False
+    sd_locked: True
+    resume_path: "/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/ldm/data/Pathcap_control2_ini.ckpt"
+    # fid_path: /a2il/data/mbhosale/PathDiff/MixedCondition/PanNuke_TCGA/validation_fid_stats.npz
+    scheduler_config:
+      target: ldm.lr_scheduler.LambdaLinearScheduler
+      params:
+        warm_up_steps:
+        - 1000
+        cycle_lengths:
+        - 10000000000000
+        f_start:
+        - 1.0e-06
+        f_max:
+        - 1.0
+        f_min:
+        - 1.0
+    control_stage_config:
+      target: cldm.cldm.ControlNet
+      params:
+        image_size: 64 # unused
+        in_channels: 3
+        hint_channels: 6
+        model_channels: 192 # self.model channels in controlnet
+        attention_resolutions: [ 8, 4, 2 ]
+        num_res_blocks: 2
+        channel_mult: [ 1, 2, 3, 5 ]
+        num_heads: 1
+        use_spatial_transformer: True
+        transformer_depth: 1
+        context_dim: 512
+        use_checkpoint: True
+        legacy: False
+
+    unet_config:
+      target: cldm.cldm.ControlledUnetModel
+      params:
+        image_size: 64 # unused
+        in_channels: 3
+        out_channels: 3
+        model_channels: 192
+        attention_resolutions: [ 8, 4, 2 ]
+        num_res_blocks: 2
+        channel_mult: [ 1, 2, 3, 5 ]
+        num_heads: 1
+        use_spatial_transformer: True
+        transformer_depth: 1
+        context_dim: 512
+        use_checkpoint: True
+        legacy: False
+    first_stage_config:
+      target: ldm.models.autoencoder.VQModelInterface
+      # ckpt_path: "/data_local1/mbhosale/PathDiff/logs/11-17T22-19_all_data_vq_f4/checkpoints/last.ckpt"
+      params:
+        embed_dim: 3
+        n_embed: 8192
+        monitor: val/rec_loss
+        ddconfig:
+          double_z: false
+          z_channels: 3
+          resolution: 256
+          in_channels: 3
+          out_ch: 3
+          ch: 128
+          ch_mult:
+          - 1
+          - 2
+          - 4
+          num_res_blocks: 2
+          attn_resolutions: []
+          dropout: 0.0
+        lossconfig:
+          target: torch.nn.Identity
+    cond_stage_config:
+        secondary_cond_stage_trainable: false
+        target: ldm.modules.encoders.modules.FrozenCLIPEmbedder
+        params:
+          version: vinid/plip
+          max_length: 154
+data:
+  target: main.DataModuleFromConfig
+  params:
+    batch_size: 16
+    num_workers: 12
+    wrap: false
+    train:
+      target: ldm.data.mixed_cond.mixed_condition_control.MixedConditionDataset # for pathdiff
+      # target: ldm.data.mixed_cond.mixed_condition_control_controlnet.ControlnetWrapperDatasetv2 # for controlnet
+      params:
+        config:
+          datasets:
+            PanNukeV2: # PanNukeV2: #   Conic: #: Monusac
+              config:
+                root: /data_local1/mbhosale/PathDiff/PanNuke/PanNuke2 # /data_local1/mbhosale/PathDiff/Monusac_processed/ # /data_local1/mbhosale/PathDiff/CONIC #/data_local1/mbhosale/PathDiff/PanNuke/PanNuke2
+                split: train
+                num_levels: 2
+                crop_size: 256
+                p_uncond: 0.1
+                seed: 42
+            PathCap:
+              config:
+                root: /data_local1/mbhosale/PathDiff/PathCap/wrap
+                split: train
+                crop_size: 256
+                num_levels: 2
+                p_uncond: 0.1
+          split_prob: 1
+          inference: true
+          hint_channels: 6
+    validation:
+      target: ldm.data.mixed_cond.mixed_condition_control.MixedConditionDataset
+      # target: ldm.data.mixed_cond.mixed_condition_control_controlnet.ControlnetWrapperDatasetv2
+      params:
+        config:
+          datasets:
+            PanNukeV2:
+              config:
+                root: /data_local1/mbhosale/PathDiff/PanNuke/PanNuke2
+                split: test
+                num_levels: 2
+                seed: 42
+                crop_size: 256
+            PathCap:
+              config:
+                root: /data_local1/mbhosale/PathDiff/PathCap/wrap
+                split: test
+                crop_size: 256
+                num_levels: 2
+          split_prob: 1
+          inference: true
+          hint_channels: 6
+lightning:
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 500 # 2000 reduce this to reduce the logging time / checkpointing time
+        max_images: 8
+        increase_log_steps: false
+        log_images_kwargs:
+          quantize_denoised: false
+          inpaint: false
+    model_checkpoint:
+      target: pytorch_lightning.callbacks.ModelCheckpoint
+      params:
+        save_weights_only: true
+  trainer:
+    benchmark: true
+    accelerator: ddp
+    gpus: 2,

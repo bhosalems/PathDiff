@@ -1,0 +1,18 @@
+
+data_config: /home/csgrad/mbhosale/phd/Pathdiff/PathLDM/configs/latent-diffusion/mixed_cond/plip_imagenet_finetune_Mixed_control.yaml
+model_config: /data_local1/mbhosale/PathDiff/2025_logs/01-28T13-32_plip_imagenet_finetune_Mixed_control/configs/01-28T13-32-project.yaml
+ckpt_path: /data_local1/mbhosale/PathDiff/2025_logs/01-28T13-32_plip_imagenet_finetune_Mixed_control/checkpoints/last.ckpt
+fid_path: /a2il/data/mbhosale/PathDiff/Monusac_processed/validation_inception_fid_stats.npz
+output_dir: /data_local1/mbhosale/PathDiff/logs/inference/Mixed/PathCap_Baseline_T/
+validation_step_outputs_file: /data_local1/mbhosale/PathDiff/logs/inference/Mixed/PathCap_Baseline_T/validation_inference/validation_step_outputs.pt
+sim_score_img: ''
+sim_score_txt: ''
+total_samples: 1000
+split: validation
+device: cuda:0
+shape:
+- 3
+- 64
+- 64
+steps: 100
+unconditional_guidance_scale: 1.5

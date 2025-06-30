@@ -38,10 +38,23 @@ conda activate pathdiff
 ## 🚀 Quick Start
 
 
-Download pretrained model trained jointly [here](https://drive.google.com/drive/folders/1y2vwDWGqqqn95ClFr-kT0IUCTVqrq0uy?usp=sharing). Please setup the path of the downloaded checkpoint in sampling.py. We also provide small dataset with silver standard masks on PathCap in pathcap_label_pred_small according to different pathologies.
+Download pretrained model trained jointly [here](https://drive.google.com/drive/folders/1y2vwDWGqqqn95ClFr-kT0IUCTVqrq0uy?usp=sharing). Please setup the path of the downloaded checkpoint sand configs in sampling.py. We also provide small dataset with silver standard masks on PathCap in pathcap_label_pred_small according to different pathologies. 
 
 ```bash
-
+# Set the checkpoint and config. Let method be PathDiff and dataset be PATHCAP (trained jointly on PathCap and CONIC.)
+model_check_points = {
+            "PanNuke": "",
+            "TCGA": "",
+            "CONIC": "",
+            "PATHCAP": "last.ckpt" <-------- Set this
+        }
+  
+model_configs = {
+            "PanNuke": "",
+            "TCGA": "",
+            "CONIC": "",
+            "PATHCAP": "/configs/11-02T02-36-project.yaml"
+        }  
 # Run Inference
 python sampling.py
 ```

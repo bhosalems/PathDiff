@@ -36,7 +36,7 @@ def get_fid_model(model='inception', device='cuda:4'):
         )
     elif model == 'conch':
         model_cfg = 'conch_ViT-B-16'
-        checkpoint_path = '/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/CONCH/checkpoints/conch/pytorch_model.bin'
+        checkpoint_path = 'conch/pytorch_model.bin'
         m, preprocessor = create_model_from_pretrained(model_cfg, checkpoint_path, force_image_size=256, device=device)
         _ = m.eval()
         m.to(device)
@@ -54,7 +54,7 @@ def get_sim_model(txt_sim_model, device):
         preprocessor = CLIPProcessor.from_pretrained("vinid/plip")
     elif txt_sim_model == 'conch':
         model_cfg = 'conch_ViT-B-16'
-        checkpoint_path = '/home/csgrad/mbhosale/phd/Pathdiff/PathLDM/CONCH/checkpoints/conch/pytorch_model.bin'
+        checkpoint_path = 'conch/pytorch_model.bin'
         model, preprocessor = create_model_from_pretrained(model_cfg, checkpoint_path, force_image_size=256, device=device)
         tokenizer = get_tokenizer()
         _ = model.eval()

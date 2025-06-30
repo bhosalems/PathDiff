@@ -344,8 +344,8 @@ if __name__ == "__main__":
     dataset='PATHCAP'
     device = "cuda"
     number_of_examples = 500
-    method = 'PathDiff'
-    data =  "/a2il/data/mbhosale/PathDiff/PathCap/wrap/pathcap/pathcap_label_pred_small/annots"
+    method = 'ControlNet'  
+    data =  "pathcap_label_pred_small/annots"
     output_dir = "samples"
     if method == 'PathDiff':
         mask_channels = 6
@@ -353,13 +353,13 @@ if __name__ == "__main__":
             "PanNuke": "",
             "TCGA": "/data_local2/mbhosale/PathDiff/logs/10-31T13-09_plip_imagenet_finetune_Mixed_control/checkpoints/epoch=000044.ckpt",
             "CONIC": "/data_local2/mbhosale/PathDiff/logs/10-31T13-09_plip_imagenet_finetune_Mixed_control/checkpoints/epoch=000044.ckpt",
-            "PATHCAP": "/home/csgrad/mbhosale/phd/Pathdiff/ControlNet/logs/11-02T02-36_plip_imagenet_finetune_Mixed_control/checkpoints/last.ckpt"
+            "PATHCAP": "last.ckpt"
         }
         model_configs = {
             "PanNuke": "",
             "TCGA": "/data_local2/mbhosale/PathDiff/logs/10-31T13-09_plip_imagenet_finetune_Mixed_control/configs/10-31T13-09-project.yaml",
             "CONIC": "/data_local2/mbhosale/PathDiff/logs/10-31T13-09_plip_imagenet_finetune_Mixed_control/configs/10-31T13-09-project.yaml",
-            "PATHCAP": "/home/csgrad/mbhosale/phd/Pathdiff/ControlNet/logs/11-02T02-36_plip_imagenet_finetune_Mixed_control/configs/11-02T02-36-project.yaml"
+            "PATHCAP": "/configs/11-02T02-36-project.yaml"
         }
     elif method == 'ControlNet':
         if dataset in ['CONIC', 'PATHCAP']:

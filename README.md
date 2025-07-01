@@ -105,7 +105,7 @@ This model is provided for **research and educational purposes only**. It is **n
 ## 🤝 Acknowledgements
 
 
-We thank authors of [PathLDM](https://github.com/cvlab-stonybrook/PathLDM), [ControlNet](https://github.com/lllyasviel/ControlNet) and [DeepCMorph](https://github.com/aiff22/DeepCMorph) for release of their code. We also thank authors of datasets we used in this work.
+We thank authors of [PathLDM](https://github.com/cvlab-stonybrook/PathLDM), [ControlNet](https://github.com/lllyasviel/ControlNet), [CellVIT](https://github.com/TIO-IKIM/CellViT) and [DeepCMorph](https://github.com/aiff22/DeepCMorph) for release of their code. We also thank authors of datasets we used in this work.
 
 
 ## 📑 Citation

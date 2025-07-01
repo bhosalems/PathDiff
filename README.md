@@ -1,4 +1,4 @@
-# 🚀 PathDiff : Histopathology Image Synthesis with Unpaired Text and Mask Conditions**
+# 🚀 PathDiff : Histopathology Image Synthesis with Unpaired Text and Mask Conditions
 
 [Mahesh Bhosale](https://bhosalems.github.io/)<sup>1</sup>, [Abdul Wasi](https://scholar.google.com/citations?user=_2friTYAAAAJ&hl=en)<sup>1</sup>, [Yuanhao Zhai](https://www.yhzhai.com/)<sup>1</sup>, [Yunjie Tian](https://sunsmarterjie.github.io/)<sup>1</sup>, [Samuel Border](https://scholar.google.com/citations?user=6EIOlGMAAAAJ&hl=en)<sup>2</sup>, [Nan Xi](https://southnx.github.io/)<sup>1</sup>, [Pinaki Sarder](https://scholar.google.com/citations?user=BZyJ4qMAAAAJ&hl=en)<sup>2</sup>, [Junsong Yuan](https://scholar.google.com/citations?user=fJ7seq0AAAAJ&hl=en)<sup>1</sup>, [David Doermann](https://scholar.google.com/citations?user=RoGOW9AAAAAJ&hl=en)<sup>1</sup>, [Xuan Gong](https://scholar.google.com/citations?user=sTqQ-jgAAAAJ&hl=en)<sup>3</sup>
 
@@ -112,10 +112,13 @@ We thank authors of [PathLDM](https://github.com/cvlab-stonybrook/PathLDM), [Con
 
 
 ```bibtex
-@inproceedings{bhosale2025pathdiff,
-  title     = {PathDiff: Histopathology Image Synthesis with Unpaired Text and Mask Conditions},
-  author    = {Bhosale, Mahesh and Wasi, Abdul and Zhai, Yuanhao and Tian, Yunjie and Border, Samuel and Xi, Nan and Sarder, Pinaki and Yuan, Junsong and Doermann, David and Gong, Xuan},
-  booktitle = {Proceedings of ICCV},
-  year      = {2025}
+@misc{bhosale2025pathdiffhistopathologyimagesynthesis,
+      title={PathDiff: Histopathology Image Synthesis with Unpaired Text and Mask Conditions}, 
+      author={Mahesh Bhosale and Abdul Wasi and Yuanhao Zhai and Yunjie Tian and Samuel Border and Nan Xi and Pinaki Sarder and Junsong Yuan and David Doermann and Xuan Gong},
+      year={2025},
+      eprint={2506.23440},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2506.23440}, 
 }
 ```

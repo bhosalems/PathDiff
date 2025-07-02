@@ -95,7 +95,7 @@ python computer_metrics.py
 ```
 
 
-## ⚠️ Ethical Statement
+## ⚠️ Ethics Statement
 
 
 This model is provided for **research and educational purposes only**. It is **not** designed, tested, or validated for clinical or diagnostic use. **Under no circumstances** should it be used to make medical decisions or inform patient care.

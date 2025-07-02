@@ -4,7 +4,7 @@
 
 **<sup>1</sup>University at Buffalo  |  <sup>2</sup>University of Florida  |  <sup>3</sup>Harvard Medical School**
 
-
+[Paper](https://arxiv.org/abs/2506.23440)
 
 ## 📖 Overview
 
